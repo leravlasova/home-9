@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+    const todo = {
+
+        list: [],
+
+        add(title, text) {
+            if (!title.trim() || !text.trim()){
+                return
+            }
+
+            const isUnique = this.checkUnique(title, text);
+
+            if (isUnique) {
+                const note = {
+                    title,
+                    text,
+                    isComplete : false
+                }
+
+                this.list.push(note);
+            }
+        },
+
+        remove(title) {
+            const removeIndex = this.list.findindex(note => note.title === title);
+            if(removeIndex !== -1){
+                this.list.splice(removeIndex, 1);
+            }
+        },
+
+        edit(){},
+
+        toggleComplete(title) {
+            const index = this.list.findindex(note => note.title === title0);
+
+            if (index !== -1){
+                ihis.list[index].isComplete = !this.list[index].isComplete;
+            }
+        },
+
+        checkUnique(title, text) {
+            return !this.list.find(note => note.title === title || note.text ===text);
+        },
+
+        get Statistic() {
+            return this.list.reduce((acc, note) => {
+                note.isComplete ? acc.completed++ : acc.uncompleted++;
+                return acc;
+            },{
+                total: this.list.length,
+                completed: 0,
+                uncompleted:  0,
+            })
+
+        }
+
+    };
+
+
+    for (const key in todo) {
+        Object.defineProperty(todo, key, {
+            configurable:false
+        })
+    }
+    
+    </script>
+</body>
+</html>
