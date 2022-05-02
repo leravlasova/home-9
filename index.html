@@ -37,26 +37,37 @@
             }
         },
 
-        edit (title, newTodoText) {
-            const todo = this.list.find(note => note.title === title);
 
-            if (todo) {
-                note.text = newTodoText;
+
+
+        edit (title, newTodoText) {
+            const todo = this.list.findIndex((note) => note.title === title);
+
+            if (todo !== -1) {
+                this.list[todo].text = newTodoText;
             }
         },
-    
 
+        editStatus(title){
+            const todo = this.list.findIndex((note) => note.title === title);
 
+            if  (todo !== -1) {
+                this.list[todo].isComplete = !this.list[todo].isComplete;
+            }
 
+        },
 
 
         toggleComplete(title) {
-            const index = this.list.findindex(note => note.title === title);
+            const index = this.list.findIndex(note => note.title === title);
 
             if (index !== -1){
-                ihis.list[index].isComplete = !this.list[index].isComplete;
+                this.list[index].isComplete = !this.list[index].isComplete;
             }
         },
+
+
+
 
         checkUnique(title, text) {
             return !this.list.find(note => note.title === title || note.text ===text);
