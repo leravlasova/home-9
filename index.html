@@ -37,10 +37,21 @@
             }
         },
 
-        edit(){},
+        edit (title, newTodoText) {
+            const todo = this.list.find(note => note.title === title);
+
+            if (todo) {
+                note.text = newTodoText;
+            }
+        },
+    
+
+
+
+
 
         toggleComplete(title) {
-            const index = this.list.findindex(note => note.title === title0);
+            const index = this.list.findindex(note => note.title === title);
 
             if (index !== -1){
                 ihis.list[index].isComplete = !this.list[index].isComplete;
@@ -75,3 +86,4 @@
     </script>
 </body>
 </html>
+
